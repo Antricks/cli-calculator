@@ -23,10 +23,10 @@ würde zu diesem Baum:
 Und nicht zu diesem Baum:
 
 	  *
-	2    +
-		5   -
-		  10   /
-             3  4
+    2    +
+        5   -
+          10   /
+             3   4
 
 
 Dieser Baum wäre auch okay, der käme aber nicht bei verarbeitung in Leserichtung heraus:
