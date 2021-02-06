@@ -14,10 +14,10 @@ Ich bau mir rekursiv eine Baumstruktur, Verzweigungen sind Operatoren, Zahlen si
 
 würde zu diesem Baum:
 
-			+
-		*      -
-	  2   5  10  /
-				3  4
+            +
+        *      -
+      2   5  10  /
+                3  4
 
 
 Und nicht zu diesem Baum:
