@@ -31,24 +31,24 @@ Und nicht zu diesem Baum:
 
 Dieser Baum wäre auch okay, der käme aber nicht bei verarbeitung in Leserichtung heraus:
 
-        -
-    +       /
-  *  10   3   4
-2  5
+         -
+     +       /
+   *  10   3   4
+ 2  5
 
 ! WICHTIG IST AUCH:
 
-a - b
+ a - b
 
 wird zu 
 
     -
-a   b
+  a   b
 
 nicht zu
 
     -
-b   a
+  b   a
 
 ! denn a - b muss nicht unbedingt b - a sein
 
