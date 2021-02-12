@@ -1,7 +1,5 @@
 package src;
 
-import java.util.regex.Pattern;
-
 public class Equation {
     static char[] OPERANDS = {'+', '-', '*', '/', '^', '%'};
 
@@ -12,15 +10,51 @@ public class Equation {
     double constant;
 
     Equation(String inputEquation) {
-        for (char operand : OPERANDS) {
-            if(inputEquation.contains(String.valueOf(operand))) {
-                String[] input_split = inputEquation.split(Pattern.quote(String.valueOf(operand)), 2);
-                
-                this.a = new Equation(input_split[0]);
-                this.b = new Equation(input_split[1]);
-                this.operand = operand;
 
-                return;
+        int in_brackets = 0;
+        
+        int bracket_count = 0;
+
+        for (char c : inputEquation.toCharArray()) {
+            if(c == '(') {
+                bracket_count++;
+            }
+        }
+
+        boolean last_brackets = (bracket_count == 1 && inputEquation.strip().toCharArray()[0] == '(' && inputEquation.strip().toCharArray()[inputEquation.strip().length()-1] == ')');
+
+        if (last_brackets) {
+            inputEquation = inputEquation.replaceAll("\\(", "").replaceAll("\\)", "");
+        }
+
+        for (char operand : OPERANDS) {
+
+            if(inputEquation.contains(String.valueOf(operand))) {                
+            
+                char c;
+
+                for (int i = 0; i < inputEquation.toCharArray().length; i++) {
+                    
+                    c = inputEquation.toCharArray()[i];
+
+                    if(c == '(') {
+                        in_brackets++;
+                    } else if (c == ')') {
+                        in_brackets--;
+                    }
+
+                    if(c == operand && !(in_brackets > 0 && !last_brackets)) {
+            
+                        String input_a = inputEquation.substring(0, i);
+                        String input_b = inputEquation.substring(i+1, inputEquation.length());
+
+                        this.a = new Equation(input_a);
+                        this.b = new Equation(input_b);
+                        this.operand = operand;
+
+                        return;
+                    }
+                }
             }
         }
 

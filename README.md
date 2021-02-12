@@ -77,7 +77,7 @@ Sollte jetzt zu diesem Baum hier werden:
     2     3
 ```
 
-Wenn ich irgendwie eine Klammer finde, muss ich also eine neue `Euation` vom Inhalt der Klammern machen. 
+Wenn ich irgendwie eine Klammer finde, muss ich also eine neue `Euqation` vom Inhalt der Klammern machen. 
 
 Der aktuelle Code würde diese Katastrophe daraus machen:
 
@@ -87,5 +87,9 @@ Der aktuelle Code würde diese Katastrophe daraus machen:
 1   "(2"
 ```
 
+Die Lösung für dieses Problem ist, dass man natürlich Operatoren, die sich in Klammern befinden, erst berücksichtigt, wenn es außerhalb der Klammern keine anderen Operatoren mehr gibt. Das lässt sich aber nicht einfach dadurch entscheiden, dass an beiden Enden des Inputs Klammern sind, denn `(1-2)*(3+4)` hat ja noch das `*`  zwischen beiden Klammern. Wenn ich sage, dass ein Operator nicht berücksichtigt werden darf, wenn er in einer Klammer steht, es sei denn, außerhalb der Klammer gibt es nichts mehr, und die Klammern sind dementsprechend auch nur eine Öffnende und eine Schließende, dann müsste das funktionieren.
 
+Dann und erst dann kann ich die Klammern auch aus dem Input löschen.
+
+ 
 

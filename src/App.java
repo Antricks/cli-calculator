@@ -8,13 +8,21 @@ public class App {
         
         System.out.println("Willkommen bei meinem super tollen Taschenrechner. Unterstützt sind folgende Operatoren:");
         System.out.println("+ - / * % ^");
-        System.out.println("Außerdem kannst du 'pi' oder 'e' verwenden, Groß-/Kleinschreibung ist egal.");
-        System.out.println("Klammern werden leider noch nicht unterstützt.");
+        System.out.println("Des Weiteren kannst du auch gewöhnliche Klammern also '(' bzw ')' verwenden.");
+        System.out.println("Außerdem kannst du 'pi' oder 'e' verwenden, Groß-/Kleinschreibung ist da egal.");
+        System.out.println("Mit 'exit' kannst du das Programm beenden.");
+
+        String input;
 
         while (true) {
             try {
                 System.out.print("> ");
-                System.out.println(alleskoenner.taschenrechner(alleskoenner.nextLine()));    
+                input = alleskoenner.nextLine();
+                if(input.contains("exit")) {
+                    System.out.println("Tschüssi!");
+                    break;
+                }
+                System.out.println(alleskoenner.taschenrechner(input));
             } catch (Exception e) {
                 System.out.println("FEHLER - überprüfe deine Eingabe.");
             }
