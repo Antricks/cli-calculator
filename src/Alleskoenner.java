@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Scanner;
 
 public class Alleskoenner {
@@ -8,7 +10,7 @@ public class Alleskoenner {
     }
     
     boolean istSchaltjahr(int jahr) {
-        return jahr % 4 == 0 && !(jahr % 100 == 0 && !(jahr % 400 == 0));
+        return jahr % 4 == 0 && !(jahr % 100 == 0 && !(jahr % 400 == 0)); 
     }
 
     double taschenrechner(String eingabe) {

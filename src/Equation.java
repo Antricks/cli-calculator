@@ -1,24 +1,15 @@
+package src;
+
 import java.util.regex.Pattern;
 
 public class Equation {
-    char[] OPERANDS = {'+', '-', '*', '/', '^', '%'};
+    static char[] OPERANDS = {'+', '-', '*', '/', '^', '%'};
 
     Equation a;
     Equation b;
     char operand;
 
     double constant;
-
-    Equation(Equation a, Equation b, char operand) {
-        this.a = a;
-        this.b = b;
-        this.operand = operand;
-        constant = 9999;
-    }
-
-    Equation(double constant) {
-        this.constant = constant;
-    }
 
     Equation(String inputEquation) {
         for (char operand : OPERANDS) {
