@@ -24,7 +24,7 @@ public class Term {
         boolean last_brackets = (bracket_count == 1 && inputTerm.strip().toCharArray()[0] == '(' && inputTerm.strip().toCharArray()[inputTerm.strip().length()-1] == ')');
 
         if (last_brackets) {
-            inputTerm = inputTerm.replaceAll("\\(", "").replaceAll("\\)", "");
+            inputTerm = inputTerm.replace("(", "").replace(")", "");
         }
 
         for (char operand : OPERANDS) {
