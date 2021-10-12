@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Equation
-comment1.params=inputEquation
-comment1.target=Equation(java.lang.String)
-comment2.params=
-comment2.target=double\ eval()
-numComments=3
