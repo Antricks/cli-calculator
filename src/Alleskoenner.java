@@ -14,8 +14,7 @@ public class Alleskoenner {
     }
 
     double taschenrechner(String eingabe) {
-        Equation finalEquation = new Equation(eingabe);
-        return finalEquation.eval();
+        return new Term(eingabe).eval();
     }
 
     String nextLine() {

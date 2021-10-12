@@ -1,41 +1,41 @@
 package src;
 
-public class Equation {
+public class Term {
     static char[] OPERANDS = {'+', '-', '*', '/', '^', '%'};
 
-    Equation a;
-    Equation b;
+    Term a;
+    Term b;
     char operand;
 
     double constant;
 
-    Equation(String inputEquation) {
+    Term(String inputTerm) {
 
         int in_brackets = 0;
         
         int bracket_count = 0;
 
-        for (char c : inputEquation.toCharArray()) {
+        for (char c : inputTerm.toCharArray()) {
             if(c == '(') {
                 bracket_count++;
             }
         }
 
-        boolean last_brackets = (bracket_count == 1 && inputEquation.strip().toCharArray()[0] == '(' && inputEquation.strip().toCharArray()[inputEquation.strip().length()-1] == ')');
+        boolean last_brackets = (bracket_count == 1 && inputTerm.strip().toCharArray()[0] == '(' && inputTerm.strip().toCharArray()[inputTerm.strip().length()-1] == ')');
 
         if (last_brackets) {
-            inputEquation = inputEquation.replaceAll("\\(", "").replaceAll("\\)", "");
+            inputTerm = inputTerm.replaceAll("\\(", "").replaceAll("\\)", "");
         }
 
         for (char operand : OPERANDS) {
 
-            if(inputEquation.contains(String.valueOf(operand))) {                
+            if(inputTerm.contains(String.valueOf(operand))) {                
             
                 char c;
 
-                for (int i = 0; i < inputEquation.toCharArray().length; i++) {
+                for (int i = 0; i < inputTerm.toCharArray().length; i++) {
                     
-                    c = inputEquation.toCharArray()[i];
+                    c = inputTerm.toCharArray()[i];
 
                     if(c == '(') {
                         in_brackets++;
@@ -45,11 +45,11 @@ public class Equation {
 
                     if(c == operand && !(in_brackets > 0 && !last_brackets)) {
             
-                        String input_a = inputEquation.substring(0, i);
-                        String input_b = inputEquation.substring(i+1, inputEquation.length());
+                        String input_a = inputTerm.substring(0, i);
+                        String input_b = inputTerm.substring(i+1, inputTerm.length());
 
-                        this.a = new Equation(input_a);
-                        this.b = new Equation(input_b);
+                        this.a = new Term(input_a);
+                        this.b = new Term(input_b);
                         this.operand = operand;
 
                         return;
@@ -58,12 +58,12 @@ public class Equation {
             }
         }
 
-        if (inputEquation.strip().equalsIgnoreCase("pi")) {
+        if (inputTerm.strip().equalsIgnoreCase("pi")) {
             this.constant = Math.PI;
-        } else if (inputEquation.strip().equalsIgnoreCase("e")) {
+        } else if (inputTerm.strip().equalsIgnoreCase("e")) {
             this.constant = Math.E;
         } else {
-            this.constant = Double.parseDouble(inputEquation.strip());
+            this.constant = Double.parseDouble(inputTerm.strip());
         }
     }
 
