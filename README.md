@@ -1,3 +1,5 @@
+(German explanation of my thought process during development)
+
 ### Mein Denkvorgang beim Taschenrechner:
 
 Hier muss ich dann wohl rekursiv den String zerlegen...
