@@ -27,9 +27,9 @@ public class Term {
             inputTerm = inputTerm.replace("(", "").replace(")", "");
         }
 
-        for (char operator : OPERATORS) {
+        for (char op : OPERATORS) {
 
-            if(inputTerm.contains(String.valueOf(operator))) {                
+            if(inputTerm.contains(String.valueOf(op))) {                
             
                 char c;
 
@@ -43,14 +43,14 @@ public class Term {
                         inBrackets--;
                     }
 
-                    if(c == operator && !(inBrackets > 0 && !lastBrackets)) {
+                    if(c == op && !(inBrackets > 0 && !lastBrackets)) {
             
                         String inputA = inputTerm.substring(0, i);
                         String inputB = inputTerm.substring(i+1, inputTerm.length());
 
                         this.a = new Term(inputA);
                         this.b = new Term(inputB);
-                        this.operator = operator;
+                        this.operator = op;
 
                         return;
                     }
