@@ -1,35 +1,35 @@
 package src;
 
 public class Term {
-    static char[] OPERANDS = {'+', '-', '*', '/', '^', '%'};
+    static char[] OPERATORS = {'+', '-', '*', '/', '^', '%'};
 
     Term a;
     Term b;
-    char operand;
+    char operator;
 
     double constant;
 
     Term(String inputTerm) {
 
-        int in_brackets = 0;
+        int inBrackets = 0;
         
-        int bracket_count = 0;
+        int bracketCount = 0;
 
         for (char c : inputTerm.toCharArray()) {
             if(c == '(') {
-                bracket_count++;
+                bracketCount++;
             }
         }
 
-        boolean last_brackets = (bracket_count == 1 && inputTerm.strip().toCharArray()[0] == '(' && inputTerm.strip().toCharArray()[inputTerm.strip().length()-1] == ')');
+        boolean lastBrackets = (bracketCount == 1 && inputTerm.strip().toCharArray()[0] == '(' && inputTerm.strip().toCharArray()[inputTerm.strip().length()-1] == ')');
 
-        if (last_brackets) {
+        if (lastBrackets) {
             inputTerm = inputTerm.replace("(", "").replace(")", "");
         }
 
-        for (char operand : OPERANDS) {
+        for (char operator : OPERATORS) {
 
-            if(inputTerm.contains(String.valueOf(operand))) {                
+            if(inputTerm.contains(String.valueOf(operator))) {                
             
                 char c;
 
@@ -38,19 +38,19 @@ public class Term {
                     c = inputTerm.toCharArray()[i];
 
                     if(c == '(') {
-                        in_brackets++;
+                        inBrackets++;
                     } else if (c == ')') {
-                        in_brackets--;
+                        inBrackets--;
                     }
 
-                    if(c == operand && !(in_brackets > 0 && !last_brackets)) {
+                    if(c == operator && !(inBrackets > 0 && !lastBrackets)) {
             
-                        String input_a = inputTerm.substring(0, i);
-                        String input_b = inputTerm.substring(i+1, inputTerm.length());
+                        String inputA = inputTerm.substring(0, i);
+                        String inputB = inputTerm.substring(i+1, inputTerm.length());
 
-                        this.a = new Term(input_a);
-                        this.b = new Term(input_b);
-                        this.operand = operand;
+                        this.a = new Term(inputA);
+                        this.b = new Term(inputB);
+                        this.operator = operator;
 
                         return;
                     }
@@ -68,17 +68,17 @@ public class Term {
     }
 
     public double eval() {
-        if(operand == '+') {
+        if(operator == '+') {
             return a.eval() + b.eval();
-        } else if (operand == '-') {
+        } else if (operator == '-') {
             return a.eval() - b.eval();
-        } else if (operand == '*') {
+        } else if (operator == '*') {
             return a.eval() * b.eval();
-        } else if (operand == '/') {
+        } else if (operator == '/') {
             return a.eval() / b.eval();
-        } else if (operand == '^') {
+        } else if (operator == '^') {
             return Math.pow(a.eval(), b.eval());
-        } else if (operand == '%') {
+        } else if (operator == '%') {
             return a.eval() % b.eval();
         } else {
             return constant;

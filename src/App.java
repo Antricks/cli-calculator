@@ -1,31 +1,31 @@
 package src;
 
 public class App {
-    static Alleskoenner alleskoenner;
+    static Calculator calc;
     
-    public static void main(String[] args) throws Exception {
-        alleskoenner = new Alleskoenner();
+    public static void main(String[] args) {
+        calc = new Calculator();
         
-        System.out.println("Willkommen bei meinem super tollen Taschenrechner. Unterstützt sind folgende Operatoren:");
+        System.out.println("Welcome to my super awesome calculator. Here's a list of the supported operators:");
         System.out.println("+ - / * % ^");
-        System.out.println("Des Weiteren kannst du auch gewöhnliche Klammern also '(' bzw ')' verwenden.");
-        System.out.println("Außerdem kannst du 'pi' oder 'e' verwenden, Groß-/Kleinschreibung ist da egal.");
-        System.out.println("Mit 'exit' kannst du das Programm beenden.");
+        System.out.println("Furthermore you can use brackets. If you want to work with 'pi' or 'e', that's also no problem.");
+        System.out.println("To quit, simply enter 'exit' or press Ctrl+C.");
 
         String input;
 
         while (true) {
             try {
                 System.out.print("> ");
-                input = alleskoenner.nextLine();
+                input = calc.nextLine();
                 if(input.contains("exit")) {
-                    System.out.println("Tschüssi!");
                     break;
                 }
-                System.out.println(alleskoenner.taschenrechner(input));
+                System.out.println(calc.calculate(input));
             } catch (Exception e) {
-                System.out.println("FEHLER - überprüfe deine Eingabe.");
+                System.out.println("ERROR - please check your input.");
             }
         }
+
+        System.out.println("bye!");
     }   
 }
